@@ -19,7 +19,7 @@ function ListNotes() {
   const handleDelete = (id) => {
     Axios.delete(`http://localhost:4000/notes/de/${id}`)
       .then(() => {
-        setNotes(notes.filter(note => note._id !== id));
+        setNotes(notes.filter(note => note.id !== id));
         alert("Note Deleted");
       })
       .catch((err) => {
@@ -67,7 +67,7 @@ function ListNotes() {
               <td>{note.content}</td>
               <td>{note.imp_words}</td>
               <td><Button variant="warning" onClick={() => handleEdit(note)}>Edit</Button>{' '}</td>
-              <td><Button variant="danger" onClick={() => handleDelete(notes._id)}>Delete</Button></td>
+              <td><Button variant="danger" onClick={() => handleDelete(notes.id)}>Delete</Button></td>
             </tr>
           ))}
         </tbody>
